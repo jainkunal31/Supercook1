@@ -1,0 +1,984 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"_SE",
+				"_SERVER"
+			],
+			[
+				"ingred",
+				"ingredients"
+			],
+			[
+				"ingredients_",
+				"ingredients_done"
+			],
+			[
+				"t",
+				"time_upload"
+			],
+			[
+				"tim",
+				"time_upload"
+			],
+			[
+				"_S",
+				"_SESSION"
+			],
+			[
+				"rec",
+				"recipe"
+			],
+			[
+				"ingredie",
+				"ingredients"
+			],
+			[
+				"background-c",
+				"background-color"
+			],
+			[
+				"r_",
+				"r_step_time"
+			],
+			[
+				"my",
+				"mysqli"
+			],
+			[
+				"myq",
+				"mysqli_query"
+			],
+			[
+				"ingre",
+				"ingredient_query"
+			],
+			[
+				"mysq",
+				"mysqli"
+			],
+			[
+				"mysqli_fetc",
+				"mysqli_fetch_assoc"
+			],
+			[
+				"session_stt",
+				"session_start"
+			],
+			[
+				"logg",
+				"logged_in"
+			],
+			[
+				"l",
+				"li\tTag"
+			],
+			[
+				"dis",
+				"dislike"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"mys",
+				"mysql_query"
+			],
+			[
+				"R",
+				"rows"
+			],
+			[
+				"rows_",
+				"rows_step"
+			],
+			[
+				"ro",
+				"rows_ingredient"
+			],
+			[
+				"r",
+				"rows_step"
+			],
+			[
+				"rows",
+				"rows_ingredient"
+			],
+			[
+				"ste",
+				"step_query"
+			],
+			[
+				"ingr",
+				"ingredient_query"
+			],
+			[
+				"r_ste",
+				"r_step"
+			],
+			[
+				"r_st",
+				"r_step"
+			],
+			[
+				"r_step",
+				"r_step_number"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"in",
+				"ingredients"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
+				"ing",
+				"ingredients"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "searchByIngredients.php",
+			"settings":
+			{
+				"buffer_size": 6931,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "hiname.php",
+			"settings":
+			{
+				"buffer_size": 3915,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "searchByName.php",
+			"settings":
+			{
+				"buffer_size": 7028,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "upload.php",
+			"settings":
+			{
+				"buffer_size": 2877,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "recipeDetail.php",
+			"settings":
+			{
+				"buffer_size": 5927,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?php\nrequire 'db.php';\nsession_start();\ninclude 'feedback/comments.php';\n\n?>\n\n<html>\n<head></head>\n<body >\n\n<?php\n\n\n// if(isset($_POST[\"search\"]))\n// {\n//     $name=$_SESSION['recipe'];\n// }\n\n\n\n\n\n\n    // // $sql = \"Select r.r_id,r.r_name,r.r_imageurl,i.r_ingredients,s.r_step_number,s.r_step,s.r_step_time from recipe r\";\n    //    $sql = \"Select r_id as id from recipe where r_name='$name'\";\n    // $res = mysqli_query($mysqli,$sql);\n    // $x=0;\n    // $flag=0;\n    // $ingredient_query = [];\n    // $step_query = [];\n    // while($r = mysqli_fetch_assoc($res))\n    // {\n       // if($r['id']<8)\n        \n           $ingredient_query = \" Select r.r_id,r.r_name,r.r_likes,r.r_dislikes,r.r_imageurl,i.r_ingredients from recipe r inner join ingredients i on r.r_id = i.r_id where isapproved = 1\"  ;\n\n           // $step_query[$x]=\"Select r.r_id,s.r_step_number,s.r_step,s.r_step_time from recipe r inner join steps s on r.r_id = s.r_id where r.r_id = \". $r['id'] ;\n           //  $comment_query[$x] = \" Select r.r_id,c.cid,c.uid,c.date,c.message from recipe r inner join comments c on r.r_id = c.r_id where r.r_id = \".$r['id']  ;\n            //echo '<br>'.$ingredient_query[$x].'<br>';\n           //  echo '<br>'.$step_query[$x].'<br>';\n    //         $x++;\n        \n    // }\n\n    // if(!$res)\n    // {\n    //     $result = new stdClass();\n    //     $result->status = false;\n    //     $result->msg = mysqli_error($mysqli);\n    //     echo json_encode($result);\n    //     exit;\n    // }\n\n\n\n      echo '  <table cellpadding=\"10\">\n\n            <tr>\n                <th>Image</th>\n                <th>Name</th>\n                <th>Likes</th>\n                <th>Dislikes</th>\n                <th>Ingredients</th>\n                \n            </tr> ';\n\n        \n    //echo $x;\n    // for($i=0;$i<$x;$i++)\n    // {\n      //  $sql_ingredient = $ingredient_query[$i];\n        // $sql_step = $step_query[$i];\n        // $sql_comment = $comment_query[$i];\n        $res_ingredient= mysqli_query($mysqli,$ingredient_query);\n        // $res_step= mysqli_query($mysqli,$sql_step);\n        // $res_comment= mysqli_query($mysqli,$sql_comment);\n      //  $rows = $res_ingredient->num_rows;\n     //   $flag=0;\n        // $rows_step = $res_step->num_rows;\n        // $rows=$rows_ingredient>$rows_step?$rows_ingredient:$rows_step;\n      \n        //echo $rows;\n       // $flag=$rows;\n        //echo $flag;\n\n\n\n    //     while($r = mysqli_fetch_assoc($res_ingredient))\n    //     {\n\n    //     for($j=0;$j<$length;$j++)\n    //     {\n    //         if($_SESSION['ingredients'][$j]==$r['r_ingredients'])\n    //         {\n    //             $flag--;\n\n    //             break;\n    //         }\n    //     }\n    // }\n    //echo $flag;\n    \n    // if($flag)\n    //     continue;\n   \n   // $res_ingredient= mysqli_query($mysqli,$sql_ingredient);\n\n        while($r = mysqli_fetch_assoc($res_ingredient))\n        {\n            \n\n              $flag=0;\n\n            if($flag==0)\n            {\n\n\n            echo '\n\n                                        <tr >\n                                            <th rowspan=\" '. ($rows+1) .' \" >\n                                                <a href=\"recipeDetail.php?r_id='.$r['r_id'].' \">\n                                                    <img src=\" '.$r['r_imageurl'].' \"  height=150px width =150px>\n \n                                               </a>\n\n                                            </th>\n\n                                            <td rowspan=\"'.( $rows+1 ).'\" align=\"center\"> ';\n                                                \n                                         echo $r['r_name'];\n                                                        \n                                                \n                                           echo ' </td>\n\n                                             <td rowspan=\"'.( $rows+1 ).'\" align=\"center\"> ';\n                                                \n                                         echo $r['r_likes'];\n                                                        \n                                                \n                                           echo ' </td>\n\n                                             <td rowspan=\"'.( $rows+1 ).'\" align=\"center\"> ';\n                                                \n                                         echo $r['r_dislikes'];\n                                                        \n                                                \n                                           echo ' </td>\n                                        </tr>';\n\n       \n        $flag = 1;\n        \n         } \n                                   echo '  <tr>\n\n                                            <td colspan = \"1\" align = \"center\">\n                                                ' . $r['r_ingredients'] . ' \n                                            </td>\n                                            \n                                        </tr> ';\n\n\n\n\n\n } \n\n\n\n\n   //getcomments($mysqli);\n\n\n\n\n        \n\n\n    \n\n    ?>\n        </table>\n    </body>\n    </html>\n\n\n    \n\n\n\n",
+			"file": "himenu.php",
+			"file_size": 5285,
+			"file_write_time": 131678973338781268,
+			"settings":
+			{
+				"buffer_size": 5095,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Login/register.php",
+			"settings":
+			{
+				"buffer_size": 2280,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main.php",
+			"settings":
+			{
+				"buffer_size": 1829,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "connect.php",
+			"settings":
+			{
+				"buffer_size": 3289,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "approve.php",
+			"settings":
+			{
+				"buffer_size": 7478,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "connect_admin.php",
+			"settings":
+			{
+				"buffer_size": 2952,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "recipes.json",
+			"settings":
+			{
+				"buffer_size": 0,
+				"encoding": "Western (Windows 1252)",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tp.json",
+			"settings":
+			{
+				"buffer_size": 6136,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "feedback/index.php",
+			"settings":
+			{
+				"buffer_size": 1899,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "feedback/comments.php",
+			"settings":
+			{
+				"buffer_size": 7259,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Login/logout.php",
+			"settings":
+			{
+				"buffer_size": 511,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "exp.html",
+			"settings":
+			{
+				"buffer_size": 189,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 365.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampp/htdocs/Supercook1",
+		"/C/xampp/htdocs/Supercook1/feedback",
+		"/C/xampp/htdocs/Supercook1/Login"
+	],
+	"file_history":
+	[
+		"/C/xampp/htdocs/Supercook1/hi.php",
+		"/C/xampp/htdocs/Supercook1/connect_admin.php",
+		"/C/xampp/htdocs/Supercook1/Login/login.php",
+		"/C/xampp/htdocs/Supercook1/Login/profile.php",
+		"/C/xampp/htdocs/Supercook1/Login/index.php",
+		"/C/xampp/htdocs/Supercook1/feedback/db.php",
+		"/C/xampp/htdocs/Supercook1/feedback/editcomment.php",
+		"/C/xampp/htdocs/Supercook1/feedback/style.css",
+		"/C/xampp/htdocs/Supercook1/connect.php",
+		"/C/xampp/htdocs/Supercook1/upload.php",
+		"/C/xampp/htdocs/Supercook1/approve.php",
+		"/C/xampp/htdocs/Supercook1/Feedback/db.php",
+		"/C/xampp/htdocs/Supercook1/Feedback/index.php",
+		"/C/xampp/htdocs/Supercook1/Feedback/comments.php",
+		"/C/xampp/htdocs/fashiononrent/basket.php",
+		"/C/xampp/htdocs/Supercook1/tp.json"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"}\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 10,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "searchByIngredients.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6931,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								129,
+								129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4839.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "hiname.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3915,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2985,
+								2985
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5107.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "searchByName.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7028,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								7028
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "upload.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2877,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								751,
+								751
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1522.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "recipeDetail.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5706,
+								5706
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5840.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "himenu.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5095,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								715,
+								715
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3379.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "Login/register.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1700,
+								1700
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1425.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1829,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1724,
+								1724
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1327.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "connect.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1750,
+								1750
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "approve.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7478,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7021,
+								7021
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "connect_admin.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2952,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1544,
+								1544
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1622.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "recipes.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "tp.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								6136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1656.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "feedback/index.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1899,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1496,
+								1798
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1252.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "feedback/comments.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6943,
+								6943
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 6388.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "Login/logout.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 511,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								423,
+								423
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "exp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 189,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 39.0
+	},
+	"input":
+	{
+		"height": 50.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Supercook2.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 225.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
