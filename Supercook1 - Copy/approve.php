@@ -165,7 +165,7 @@ if(isset($_POST["steps_done"]))
 {
 	$ingredients_done=1;
 	$steps_done=1;
-	echo "Steps selected";
+	//echo "Steps selected";
 
 	
 }
@@ -284,6 +284,11 @@ if($ingredients_done == 0 && $steps_done==0)
   <br>
 </div>
 </form>
+
+<?php
+if(isset($_POST['more_ingredients'])){
+
+?>
 <form method="post" action="" >
 <!-- <div id="page-wrapper"> -->
   <input type="submit" value="Ingredients done"  name = "ingredients_done" >
@@ -293,6 +298,7 @@ if($ingredients_done == 0 && $steps_done==0)
 </form>
 
 <?php
+}
 }
 
 else if($ingredients_done && $steps_done==0)
@@ -315,6 +321,10 @@ else if($ingredients_done && $steps_done==0)
   <br>
 </div>
 </form>
+<?php
+if(isset($_POST['more_steps'])){
+
+?>
 
 <form method="post" action="" >
 <!-- <div id="page-wrapper"> -->
@@ -325,6 +335,7 @@ else if($ingredients_done && $steps_done==0)
 </form>
 
 <?php
+}
 }
 
 else if($steps_done)
@@ -353,7 +364,7 @@ $i=count($_SESSION['step_upload']);
 for($j=0;$j<$i;$j++)
 {
 	$sql = "Insert into steps (r_id,r_step_number,r_step,r_step_time) values ($r_id,$j+1,'".$_SESSION['step_upload'][$j]."',".$_SESSION['time_upload'][$j].")";
-	echo $sql;
+	//echo $sql;
 	mysqli_query($conn,$sql);
 }
 
@@ -410,10 +421,14 @@ $someArray=[];
 
 
 
+
+
   //header('Location:connect.php?success ' );
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
+
+header("Location:connect.php?success");
 
 //mysqli_close($conn);
 }
